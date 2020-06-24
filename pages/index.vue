@@ -1,95 +1,41 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
       <v-card>
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          我將在這裡分享 vuetify plugin 相關實作Demo
         </v-card-title>
         <v-card-text>
           <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
+            如果不夠中二，你就會失去前進的力量
           </p>
           <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+            <em><small>&mdash; Dean Lin</small></em>
           </div>
           <hr class="my-3" />
           <a
-            href="https://nuxtjs.org/"
+            href="https://github.com/dean9703111"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Nuxt Documentation
+            My github page
           </a>
           <br />
           <a
-            href="https://github.com/nuxt/nuxt.js"
+            href="https://medium.com/dean-lin"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Nuxt GitHub
+            My medium page
           </a>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire">
-            Continue
-          </v-btn>
-        </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuetifyLogo,
-  },
+  components: {},
 }
 </script>
