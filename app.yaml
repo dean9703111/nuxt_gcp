@@ -2,6 +2,9 @@ runtime: nodejs12
 
 instance_class: F1
 
+automatic_scaling:
+  max_instances: 1
+
 handlers:
   - url: /_nuxt
     static_dir: .nuxt/dist/client
