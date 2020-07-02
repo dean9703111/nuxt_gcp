@@ -3,7 +3,7 @@
     <v-container style="max-width: none;">
       <v-flex xs12>
         <v-row justify="space-between" align="center">
-          <h2>3倍卷地圖</h2>
+          <h2>3倍券地圖</h2>
         </v-row>
       </v-flex>
       <v-row>
@@ -31,7 +31,6 @@
                 @ready="mapReady()"
                 @locationfound="onLocationFound"
               >
-                <!-- <l-control-layers position="topright"></l-control-layers> -->
                 <l-marker-cluster>
                   <l-marker
                     v-for="money in moneys"
@@ -40,8 +39,20 @@
                   >
                     <l-popup>
                       <h2>{{ money.storeNm }}</h2>
-                      <br />
-                      {{ money.addr }}
+
+                      <h3>
+                        地址：<a
+                          :href="
+                            'https://www.google.com.tw/maps/place/' + money.addr
+                          "
+                          target="_blank"
+                          >{{ money.addr }}</a
+                        >
+                      </h3>
+                      <h3>營業時間：{{ money.busiTime }}</h3>
+                      <h3>
+                        電話：<a :href="'tel:' + money.tel">{{ money.tel }}</a>
+                      </h3>
                     </l-popup>
                   </l-marker>
                 </l-marker-cluster>
@@ -99,6 +110,16 @@ export default {
     },
     mapReady() {
       console.log('mapLoad')
+      this.$L.control
+        .locate({
+          position: 'topright',
+          strings: {
+            title: 'Show me where I am, yo!',
+          },
+          initialZoomLevel: 15,
+          drawCircle: false,
+        })
+        .addTo(this.$refs.LMap.mapObject)
     },
     mapZoomend() {},
     onLocationFound(location) {

@@ -71,7 +71,7 @@ export default {
         },
         {
           icon: 'mdi-map',
-          title: '3倍卷地圖',
+          title: '3倍券地圖',
           to: '/map',
         },
       ],
