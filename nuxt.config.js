@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-
+const path = require('path')
 export default {
   /*
    ** Nuxt rendering mode
@@ -32,12 +32,21 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    '@mdi/font/css/materialdesignicons.css',
+    'leaflet-geosearch/assets/css/leaflet.css',
+    'leaflet.markercluster/dist/MarkerCluster.css',
+    'leaflet.markercluster/dist/MarkerCluster.Default.css',
+  ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [{ src: '@/plugins/chart', ssr: false }],
+  plugins: [
+    '~/plugins/vuetify.js',
+    { src: '~plugins/leaflet.js', ssr: false },
+    { src: '@/plugins/chart', ssr: false },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -57,12 +66,25 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    'nuxt-leaflet',
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    proxy: true,
+    rejectUnauthorized: false,
+  },
+  proxy: {
+    '/3000gov': {
+      target: 'https://3000.gov.tw',
+      pathRewrite: {
+        '^/3000gov': '/',
+      },
+      secure: false,
+    },
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -88,5 +110,25 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    // extractCSS: true,
+    transpile: ['vuetify/lib'],
+    // https://ithelp.ithome.com.tw/articles/10207669
+    optimization: {
+      splitChunks: {
+        minSize: 10000,
+        maxSize: 250000,
+      },
+    },
+
+    /*
+     ** Run ESLint on save
+     */
+    extend(config, { isDev }) {
+      config.resolve.alias.leaflet = path.join(
+        __dirname,
+        'node_modules/leaflet'
+      )
+    },
+  },
 }

@@ -12,13 +12,29 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
+    "material-design-icons-iconfont": "^5.0.1",
+    "@mdi/font": "^4.5.95",
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/vuetify": "^1.11.2",
     "autoprefixer": "9.8.1",
     "chart.js": "^2.9.3",
     "hchs-vue-charts": "^1.2.8",
     "nuxt": "^2.13.0",
-    "vue-chartjs": "^3.5.0"
+    "vue-chartjs": "^3.5.0",
+    "leaflet": "^1.6.0",
+    "leaflet-draw": "^1.0.4",
+    "leaflet-editablecirclemarker": "^1.0.4",
+    "leaflet-geosearch": "^2.6.0",
+    "leaflet.heat": "^0.2.0",
+    "nuxt-leaflet": "^0.0.21",
+    "vue2-leaflet": "^2.5.2",
+    "vue2-leaflet-editablecirclemarker": "^1.0.5",
+    "vue2-leaflet-geosearch": "^1.0.6",
+    "vue2-leaflet-heatmap": "^1.0.5",
+    "vue2-leaflet-markercluster": "^3.1.0",
+    "style-loader": "^0.23.1",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
@@ -30,8 +46,5 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5"
-  },
-  "engines": {
-    "node": "^12"
   }
 }

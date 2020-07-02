@@ -69,6 +69,11 @@ export default {
           title: 'Chart',
           to: '/chart',
         },
+        {
+          icon: 'mdi-map',
+          title: '3倍卷地圖',
+          to: '/map',
+        },
       ],
       miniVariant: false,
       right: true,
