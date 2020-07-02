@@ -10,6 +10,10 @@
 另外如果你的instance_class如果設定是F1以上，就是一定要付費喔！！！！！！  
 官方文件建議要用到F2，但是個人實測後，F1也是可以正常跑的
 
+# deploy方式
+```
+gcloud app deploy
+```
 
 [google cloud build收費標準(前120分鐘免費)](https://cloud.google.com/cloud-build/pricing?hl=zh-tw)
 [yaml設定文件](https://cloud.google.com/appengine/docs/standard/python/config/appref#scaling_elements)
