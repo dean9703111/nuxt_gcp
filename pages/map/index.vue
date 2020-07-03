@@ -36,6 +36,7 @@
                     v-for="money in moneys"
                     :key="money.storeNm"
                     :lat-lng="[money.latitude, money.longitude]"
+                    :icon="getIcon()"
                   >
                     <l-popup>
                       <h2>{{ money.storeNm }}</h2>
@@ -56,6 +57,7 @@
                     </l-popup>
                   </l-marker>
                 </l-marker-cluster>
+                <!-- <l-control-layers position="topright"></l-control-layers> -->
                 <l-tile-layer
                   v-for="tileProvider in tileProviders"
                   :key="tileProvider.name"
@@ -65,6 +67,7 @@
                   :attribution="tileProvider.attribution"
                   layer-type="base"
                 />
+                <l-geosearch :options="geosearchOptions"></l-geosearch>
               </l-map>
             </client-only>
           </div>
@@ -75,11 +78,23 @@
 </template>
 
 <script>
+import { OpenStreetMapProvider } from 'leaflet-geosearch'
+
 export default {
   name: 'Map',
   components: {},
   data() {
     return {
+      geosearchOptions: {
+        provider: new OpenStreetMapProvider(),
+        showMarker: true,
+        autoClose: true,
+        keepResult: true,
+        style: 'bar',
+        marker: {
+          draggable: false,
+        },
+      },
       tileProviders: [
         {
           name: 'OpenStreetMap',
@@ -105,11 +120,24 @@ export default {
     await this.$store.dispatch('leaflet/get3000MoneyMapJson')
   },
   methods: {
+    getIcon() {
+      return new L.Icon({
+        iconUrl:
+          'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl:
+          'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      })
+    },
     onResize() {
       console.log('onResize')
     },
     mapReady() {
       console.log('mapLoad')
+      // 放入自我定位
       this.$L.control
         .locate({
           position: 'topright',
@@ -120,6 +148,17 @@ export default {
           drawCircle: false,
         })
         .addTo(this.$refs.LMap.mapObject)
+      // 改變搜尋marker位置
+      this.geosearchOptions.marker.icon = new L.Icon({
+        iconUrl:
+          'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+        shadowUrl:
+          'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      })
     },
     mapZoomend() {},
     onLocationFound(location) {
@@ -172,5 +211,21 @@ export default {
   max-width: 960px;
   max-height: 500px;
   overflow: hidden;
+}
+
+>>>.leaflet-control-locate a {
+  color: red;
+  width: 45px;
+  height: 45px;
+  padding-top:3px
+}
+
+>>>.leaflet-control-locate a span {
+  font-size: 2.4em;
+  cursor: pointer;
+}
+
+>>>.leaflet-control-locate.active a {
+  color: #2074B6;
 }
 </style>

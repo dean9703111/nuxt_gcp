@@ -23,6 +23,13 @@ gcloud app deploy
 [GCP官方說明免費配額](https://cloud.google.com/free/docs/gcp-free-tier)
 [nuxt各種component安裝及基礎運用](https://www.yasminzy.com/nuxt)
 [Google Cloud Platform 的終身免費方案(Free)](https://tech.digitgeek.net/t/9.html)
+
+
+
+## leaflet相關
+[改marker顏色](https://github.com/pointhi/leaflet-color-markers)
+
+
 ## Build Setup
 
 ```bash
