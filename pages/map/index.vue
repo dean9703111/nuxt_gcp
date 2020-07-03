@@ -90,7 +90,7 @@ export default {
         showMarker: true,
         autoClose: true,
         keepResult: true,
-        style: 'bar',
+        // style: 'bar',
         marker: {
           draggable: false,
         },
@@ -215,13 +215,13 @@ export default {
 
 >>>.leaflet-control-locate a {
   color: red;
-  width: 45px;
-  height: 45px;
-  padding-top:3px
+  width: 35px;
+  height: 35px;
+  padding-top:1px
 }
 
 >>>.leaflet-control-locate a span {
-  font-size: 2.4em;
+  font-size: 1.8em;
   cursor: pointer;
 }
 
